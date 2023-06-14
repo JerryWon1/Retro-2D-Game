@@ -13,35 +13,41 @@ public class Player extends Entity{
     GamePanel gp;
     KeyHandler keyH;
 
+    public final int screenX;
+    public final int screenY;
+
     public Player(GamePanel gp, KeyHandler keyH) {
         this.gp = gp;
         this.keyH = keyH;
+
+        screenX = gp.screenWidth / 2 - (gp.tileSize / 2);
+        screenY = gp.screenHeight / 2 - (gp.tileSize / 2);
 
         setDefaultValues();
         getPlayerImage();
     }
 
     public void setDefaultValues() {
-        x = 100;
-        y = 100;
+        worldX = gp.tileSize * 23;
+        worldY = gp.tileSize * 23;
         speed = 4;
         direction = "down";
     }
 
     public void getPlayerImage() {
         try {
-            upStand = ImageIO.read(getClass().getClassLoader().getResourceAsStream("player/blue_up_stand.png"));
-            up1 = ImageIO.read(getClass().getClassLoader().getResourceAsStream("player/blue_up_1.png"));
-            up2 = ImageIO.read(getClass().getClassLoader().getResourceAsStream("player/blue_up_2.png"));
-            downStand = ImageIO.read(getClass().getClassLoader().getResourceAsStream("player/blue_down_stand.png"));
-            down1 = ImageIO.read(getClass().getClassLoader().getResourceAsStream("player/blue_down_1.png"));
-            down2 = ImageIO.read(getClass().getClassLoader().getResourceAsStream("player/blue_down_2.png"));
-            leftStand = ImageIO.read(getClass().getClassLoader().getResourceAsStream("player/blue_left_stand.png"));
-            left1 = ImageIO.read(getClass().getClassLoader().getResourceAsStream("player/blue_left_1.png"));
-            left2 = ImageIO.read(getClass().getClassLoader().getResourceAsStream("player/blue_left_2.png"));
-            rightStand = ImageIO.read(getClass().getClassLoader().getResourceAsStream("player/blue_right_stand.png"));
-            right1 = ImageIO.read(getClass().getClassLoader().getResourceAsStream("player/blue_right_1.png"));
-            right2 = ImageIO.read(getClass().getClassLoader().getResourceAsStream("player/blue_right_2.png"));
+            upStand = ImageIO.read(getClass().getResourceAsStream("/player/blue_up_stand.png"));
+            up1 = ImageIO.read(getClass().getResourceAsStream("/player/blue_up_1.png"));
+            up2 = ImageIO.read(getClass().getResourceAsStream("/player/blue_up_2.png"));
+            downStand = ImageIO.read(getClass().getResourceAsStream("/player/blue_down_stand.png"));
+            down1 = ImageIO.read(getClass().getResourceAsStream("/player/blue_down_1.png"));
+            down2 = ImageIO.read(getClass().getResourceAsStream("/player/blue_down_2.png"));
+            leftStand = ImageIO.read(getClass().getResourceAsStream("/player/blue_left_stand.png"));
+            left1 = ImageIO.read(getClass().getResourceAsStream("/player/blue_left_1.png"));
+            left2 = ImageIO.read(getClass().getResourceAsStream("/player/blue_left_2.png"));
+            rightStand = ImageIO.read(getClass().getResourceAsStream("/player/blue_right_stand.png"));
+            right1 = ImageIO.read(getClass().getResourceAsStream("/player/blue_right_1.png"));
+            right2 = ImageIO.read(getClass().getResourceAsStream("/player/blue_right_2.png"));
         } catch(IOException e) {
             e.printStackTrace();
         }
@@ -52,16 +58,16 @@ public class Player extends Entity{
         if (keyH.upPressed || keyH.downPressed || keyH.leftPressed || keyH.rightPressed) {
             if(keyH.upPressed) {
                 direction = "up";
-                y -= speed;
+                worldY -= speed;
             } else if(keyH.downPressed) {
                 direction = "down";
-                y += speed;
+                worldY += speed;
             } else if(keyH.leftPressed) {
                 direction = "left";
-                x -= speed;
+                worldX -= speed;
             } else if(keyH.rightPressed) {
                 direction = "right";
-                x += speed;
+                worldX += speed;
             }
             if (spriteNum == 0) {
                 spriteNum = 1;
@@ -122,6 +128,6 @@ public class Player extends Entity{
                 break;
         }
 
-        g2.drawImage(image, x, y, gp.tileSize, gp.tileSize, null);
+        g2.drawImage(image, screenX, screenY, gp.tileSize, gp.tileSize, null);
     }
 }
