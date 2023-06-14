@@ -32,7 +32,6 @@ public class CollisionChecker {
                     entity.collisionOn = true;
                     entityTopRow -= 1;
                 }
-                System.out.println("left" + entityLeftCol + " right" + entityRightCol + " top" + entityTopRow + " bottom" + entityBottomRow);
                 break;
             case "down":
                 entityBottomRow = (entityBottomWorldY + entity.speed) / gp.tileSize;
@@ -42,7 +41,6 @@ public class CollisionChecker {
                     entity.collisionOn = true;
                     entityBottomRow -= 1;
                 }
-                System.out.println("left" + entityLeftCol + " right" + entityRightCol + " top" + entityTopRow + " bottom" + entityBottomRow);
                 break;
             case "left":
                 entityLeftCol = (entityLeftWorldX - entity.speed) / gp.tileSize;
@@ -51,7 +49,6 @@ public class CollisionChecker {
                 if(gp.tileM.tile[tileNum1].collision || gp.tileM.tile[tileNum2].collision) {
                     entity.collisionOn = true;
                 }
-                System.out.println("left" + entityLeftCol + " right" + entityRightCol + " top" + entityTopRow + " bottom" + entityBottomRow);
                 break;
             case "right":
                 entityRightCol = (entityRightWorldX + entity.speed) / gp.tileSize;
@@ -60,7 +57,6 @@ public class CollisionChecker {
                 if(gp.tileM.tile[tileNum1].collision || gp.tileM.tile[tileNum2].collision) {
                     entity.collisionOn = true;
                 }
-                System.out.println("left" + entityLeftCol + " right" + entityRightCol + " top" + entityTopRow + " bottom" + entityBottomRow);
                 break;
         }
     }
