@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5d1e4dd2-832f-47c6-b8b1-e4d4bb2c80bf" name="Changes" comment="Added basic animations">
+    <list default="true" id="5d1e4dd2-832f-47c6-b8b1-e4d4bb2c80bf" name="Changes" comment="Added World Map">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/My2DGame.iml" beforeDir="false" afterPath="$PROJECT_DIR$/My2DGame.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/entity/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/Entity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/entity/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/Player.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/GamePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/GamePanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tile/TileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tile/TileManager.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,7 +92,7 @@
       <workItem from="1686605490605" duration="364000" />
       <workItem from="1686606166148" duration="3693000" />
       <workItem from="1686629099557" duration="4928000" />
-      <workItem from="1686701372561" duration="11968000" />
+      <workItem from="1686701372561" duration="17418000" />
     </task>
     <task id="LOCAL-00001" summary="Added basic game functions">
       <created>1686634437912</created>
@@ -115,7 +115,14 @@
       <option name="project" value="LOCAL" />
       <updated>1686706922430</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Added World Map">
+      <created>1686715043446</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1686715043446</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -136,7 +143,8 @@
     <MESSAGE value="Added basic game functions" />
     <MESSAGE value="Added images" />
     <MESSAGE value="Added basic animations" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added basic animations" />
+    <MESSAGE value="Added World Map" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added World Map" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

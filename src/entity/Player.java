@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.util.Objects;
 
 public class Player extends Entity{
+
     GamePanel gp;
     KeyHandler keyH;
 
@@ -22,6 +23,9 @@ public class Player extends Entity{
 
         screenX = gp.screenWidth / 2 - (gp.tileSize / 2);
         screenY = gp.screenHeight / 2 - (gp.tileSize / 2);
+
+        //hitbox
+        solidArea = new Rectangle(10, 20, 28, 28);
 
         setDefaultValues();
         getPlayerImage();
@@ -58,17 +62,28 @@ public class Player extends Entity{
         if (keyH.upPressed || keyH.downPressed || keyH.leftPressed || keyH.rightPressed) {
             if(keyH.upPressed) {
                 direction = "up";
-                worldY -= speed;
             } else if(keyH.downPressed) {
                 direction = "down";
-                worldY += speed;
             } else if(keyH.leftPressed) {
                 direction = "left";
-                worldX -= speed;
             } else if(keyH.rightPressed) {
                 direction = "right";
-                worldX += speed;
             }
+
+            //checks for collision
+            collisionOn = false;
+            gp.cChecker.checkTile(this);
+
+            //if collision is not detected, player can move
+            if (collisionOn == false) {
+                switch (direction) {
+                    case "up" -> worldY -= speed;
+                    case "down" -> worldY += speed;
+                    case "left" -> worldX -= speed;
+                    case "right" -> worldX += speed;
+                }
+            }
+
             if (spriteNum == 0) {
                 spriteNum = 1;
             }
@@ -82,7 +97,7 @@ public class Player extends Entity{
                 spriteCounter = 0;
             }
         } else {
-            spriteNum = 0;
+            spriteNum = 0; //standing animation
         }
     }
 
