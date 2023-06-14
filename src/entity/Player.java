@@ -25,7 +25,7 @@ public class Player extends Entity{
         screenY = gp.screenHeight / 2 - (gp.tileSize / 2);
 
         //hitbox
-        solidArea = new Rectangle(10, 20, 28, 28);
+        solidArea = new Rectangle(15, 20, 18, 28);
 
         setDefaultValues();
         getPlayerImage();
