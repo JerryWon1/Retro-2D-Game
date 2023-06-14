@@ -30,24 +30,21 @@ public class GamePanel extends JPanel implements Runnable {
     int playerSpeed = 4;
 
     public GamePanel() {
-
         this.setPreferredSize(new Dimension(screenWidth, screenHeight));
-        this.setBackground(Color.black);
+        this.setBackground(Color.white);
         this.setDoubleBuffered(true);
         this.addKeyListener(keyH);
         this.setFocusable(true);
     }
 
     public void startGameThread() {
-
         gameThread = new Thread(this);
         gameThread.start();
     }
 
     @Override
     public void run() {
-
-        double drawInterval = 1000000000 / FPS; //0.0166666666666667 seconds
+        double drawInterval = (double) 1000000000 / FPS; //0.0166666666666667 seconds
         double delta = 0;
         long lastTime = System.nanoTime();
         long currentTime;
@@ -78,7 +75,6 @@ public class GamePanel extends JPanel implements Runnable {
     }
 
     public void update() {
-
         player.update();
     }
 
