@@ -7,6 +7,9 @@ import tile.TileManager;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * Sets the screen and world settings, and starts the game thread.
+ */
 public class GamePanel extends JPanel implements Runnable {
 
     //Screen settings

@@ -8,6 +8,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
+/**
+ * Loads the map from a text file.
+ */
 public class TileManager {
 
     GamePanel gp;

@@ -9,6 +9,9 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.Objects;
 
+/**
+ * Deals with the player.
+ */
 public class Player extends Entity{
 
     GamePanel gp;
@@ -135,6 +138,10 @@ public class Player extends Entity{
                         gp.obj[i] = null;
                         hasKey--;
                     }
+                    break;
+                case "Boots":
+                    gp.obj[i] = null;
+                    speed += 1;
                     break;
             }
         }

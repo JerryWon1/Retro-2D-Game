@@ -2,6 +2,9 @@ package main;
 
 import entity.Entity;
 
+/**
+ * Checks for collisions between entities, tiles, and objects.
+ */
 public class CollisionChecker {
 
     GamePanel gp;
