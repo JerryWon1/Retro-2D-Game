@@ -136,7 +136,7 @@ public class GamePanel extends JPanel implements Runnable {
 
     /**
      * Plays music on loop.
-     * @param i
+     * @param i index of song
      */
     public void playMusic(int i) {
         music.setFile(i);
@@ -153,7 +153,7 @@ public class GamePanel extends JPanel implements Runnable {
 
     /**
      * Plays sound effect once.
-     * @param i
+     * @param i index of song
      */
     public void playSE(int i) {
         se.setFile(i);
