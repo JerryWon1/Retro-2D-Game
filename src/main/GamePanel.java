@@ -25,20 +25,21 @@ public class GamePanel extends JPanel implements Runnable {
     //World Settings
     public final int maxWorldCol = 50; // 50 tiles wide
     public final int maxWorldRow = 50; // 50 tiles tall
-    public final int worldWidth = tileSize * maxWorldCol; // 2400 pixels
-    public final int worldHeight = tileSize * maxWorldRow; // 2400 pixels
 
     //FPS
     int FPS = 60; //frames per second (can change)
 
+    // System
     TileManager tileM = new TileManager(this); // Tile manager
     KeyHandler keyH = new KeyHandler(); // Key listener
-    Thread gameThread;
-
+    Sound music = new Sound(); // Music
+    Sound se = new Sound(); // Sound effects
     public CollisionChecker cChecker = new CollisionChecker(this); // Collision checker
     public AssetSetter aSetter = new AssetSetter(this); // Asset setter
-    public Player player = new Player(this, keyH); // Player
+    Thread gameThread;
 
+    // Entities
+    public Player player = new Player(this, keyH); // Player
     public SuperObject[] obj = new SuperObject[10]; // Can display maximum of 10 objects at once (can increase but will affect performance)
 
     /**
@@ -52,8 +53,13 @@ public class GamePanel extends JPanel implements Runnable {
         this.setFocusable(true);
     }
 
+    /**
+     * Sets up the game.
+     */
     public void setupGame() {
         aSetter.setObject();
+
+        playMusic(0);
     }
 
     /**
@@ -126,5 +132,31 @@ public class GamePanel extends JPanel implements Runnable {
         player.draw(g2); // Draws player
 
         g2.dispose();
+    }
+
+    /**
+     * Plays music on loop.
+     * @param i
+     */
+    public void playMusic(int i) {
+        music.setFile(i);
+        music.play();
+        music.loop();
+    }
+
+    /**
+     * Stops music.
+     */
+    public void stopMusic() {
+        music.stop();
+    }
+
+    /**
+     * Plays sound effect once.
+     * @param i
+     */
+    public void playSE(int i) {
+        se.setFile(i);
+        se.play();
     }
 }
