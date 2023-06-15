@@ -19,7 +19,7 @@ public class Player extends Entity{
 
     public final int screenX; // Player's x position on the screen
     public final int screenY; // Player's y position on the screen
-    int hasKey = 0; // How many keys the player has
+    public int hasKey = 0; // How many keys the player has
 
     public Player(GamePanel gp, KeyHandler keyH) {
         this.gp = gp;
@@ -92,7 +92,7 @@ public class Player extends Entity{
             pickUpObject(objIndex);
 
             // If collision is not detected, player can move
-            if (collisionOn == false) {
+            if (!collisionOn) {
                 switch (direction) {
                     case "up" -> worldY -= speed;
                     case "down" -> worldY += speed;
@@ -132,19 +132,29 @@ public class Player extends Entity{
                 case "Key":
                     gp.playSE(1);
                     gp.obj[i] = null;
+                    gp.ui.showMessage("You picked up a key!");
                     hasKey++;
                     break;
                 case "Door":
                     if(hasKey > 0) {
                         gp.playSE(3);
                         gp.obj[i] = null;
+                        gp.ui.showMessage("You opened the door!");
                         hasKey--;
+                    } else {
+                        gp.ui.showMessage("You need a key to open this door!");
                     }
                     break;
                 case "Boots":
                     gp.playSE(2);
                     gp.obj[i] = null;
+                    gp.ui.showMessage("You picked up boots and can run faster!");
                     speed += 1;
+                    break;
+                case "Chest":
+                    gp.ui.gameFinished = true;
+                    gp.stopMusic();
+                    gp.playSE(4);
                     break;
             }
         }
