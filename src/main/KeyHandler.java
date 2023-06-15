@@ -5,11 +5,16 @@ import java.awt.event.KeyListener;
 
 public class KeyHandler implements KeyListener {
 
-    public boolean upPressed, downPressed, leftPressed, rightPressed;
+    public boolean upPressed, downPressed, leftPressed, rightPressed; //movement keys pressed
+
     @Override
     public void keyTyped(KeyEvent e) {
     }
 
+    /**
+     * Checks and updates if key is pressed
+     * @param e KeyEvent
+     */
     @Override
     public void keyPressed(KeyEvent e) {
         int code = e.getKeyCode();
@@ -25,6 +30,10 @@ public class KeyHandler implements KeyListener {
         }
     }
 
+    /**
+     * Checks and updates if key is released
+     * @param e KeyEvent
+     */
     @Override
     public void keyReleased(KeyEvent e) {
         int code = e.getKeyCode();

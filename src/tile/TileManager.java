@@ -14,6 +14,10 @@ public class TileManager {
     public Tile[] tile;
     public int[][] mapTileNum;
 
+    /**
+     * Loads the map from a text file.
+     * @param gp
+     */
     public TileManager(GamePanel gp) {
         this.gp = gp;
 
@@ -24,6 +28,9 @@ public class TileManager {
         loadMap("/maps/world01.txt");
     }
 
+    /**
+     * Stores tile images.
+     */
     public void getTileImage() {
         try {
             for (int i = 0; i < 6; i++) {
@@ -79,6 +86,10 @@ public class TileManager {
         }
     }
 
+    /**
+     * Loads the map from a text file.
+     * @param filePath The path to the text file.
+     */
     public void loadMap(String filePath) {
         try {
             InputStream is = getClass().getResourceAsStream(filePath);
@@ -108,6 +119,10 @@ public class TileManager {
         }
     }
 
+    /**
+     * Draws the map.
+     * @param g2 The graphics object.
+     */
     public void draw(Graphics2D g2) {
         int worldCol = 0;
         int worldRow = 0;
