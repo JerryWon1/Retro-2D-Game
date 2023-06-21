@@ -12,7 +12,7 @@ import java.awt.*;
  */
 public class GamePanel extends JPanel implements Runnable {
 
-    //Screen settings
+    // Screen settings
     final int originalTileSize = 16; // 16x16 tile
     final int scale = 3; // 3x scale
 
@@ -27,7 +27,7 @@ public class GamePanel extends JPanel implements Runnable {
     public final int maxWorldRow = 50; // 50 tiles tall
 
     //FPS
-    int FPS = 60; //frames per second (can change)
+    int FPS = 60; // Frames per second (can change)
 
     // System
     TileManager tileM = new TileManager(this); // Tile manager
@@ -119,8 +119,13 @@ public class GamePanel extends JPanel implements Runnable {
      */
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-
         Graphics2D g2 = (Graphics2D) g;
+
+        // Debugging
+        long drawStart = 0;
+        if(keyH.debug) {
+            drawStart = System.nanoTime();
+        }
 
         tileM.draw(g2); // Draws tiles
 
@@ -134,6 +139,14 @@ public class GamePanel extends JPanel implements Runnable {
 
         ui.draw(g2); // Draws UI
 
+        //Debugging
+        if(keyH.debug) {
+            long drawEnd = System.nanoTime();
+            long drawTime = drawEnd - drawStart;
+            g2.setColor(Color.white);
+            g2.drawString("Draw Time: " + drawTime + " ns", 10, 400);
+            System.out.println("Draw Time: " + drawTime + " ns");
+        }
         g2.dispose();
     }
 

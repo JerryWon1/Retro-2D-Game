@@ -2,6 +2,8 @@ package entity;
 
 import main.GamePanel;
 import main.KeyHandler;
+import main.UtilityTool;
+import tile.Tile;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -50,22 +52,35 @@ public class Player extends Entity{
      * Stores the player's images & animations.
      */
     public void getPlayerImage() {
+        upStand = setup("blue_up_stand");
+        up1 = setup("blue_up_1");
+        up2 = setup("blue_up_2");
+        downStand = setup("blue_down_stand");
+        down1 = setup("blue_down_1");
+        down2 = setup("blue_down_2");
+        leftStand = setup("blue_left_stand");
+        left1 = setup("blue_left_1");
+        left2 = setup("blue_left_2");
+        rightStand = setup("blue_right_stand");
+        right1 = setup("blue_right_1");
+        right2 = setup("blue_right_2");
+    }
+
+    /**
+     * Sets up the player images.
+     * @param imageName
+     */
+    public BufferedImage setup(String imageName) {
+        UtilityTool uTool = new UtilityTool();
+        BufferedImage image = null;
+
         try {
-            upStand = ImageIO.read(getClass().getResourceAsStream("/player/blue_up_stand.png"));
-            up1 = ImageIO.read(getClass().getResourceAsStream("/player/blue_up_1.png"));
-            up2 = ImageIO.read(getClass().getResourceAsStream("/player/blue_up_2.png"));
-            downStand = ImageIO.read(getClass().getResourceAsStream("/player/blue_down_stand.png"));
-            down1 = ImageIO.read(getClass().getResourceAsStream("/player/blue_down_1.png"));
-            down2 = ImageIO.read(getClass().getResourceAsStream("/player/blue_down_2.png"));
-            leftStand = ImageIO.read(getClass().getResourceAsStream("/player/blue_left_stand.png"));
-            left1 = ImageIO.read(getClass().getResourceAsStream("/player/blue_left_1.png"));
-            left2 = ImageIO.read(getClass().getResourceAsStream("/player/blue_left_2.png"));
-            rightStand = ImageIO.read(getClass().getResourceAsStream("/player/blue_right_stand.png"));
-            right1 = ImageIO.read(getClass().getResourceAsStream("/player/blue_right_1.png"));
-            right2 = ImageIO.read(getClass().getResourceAsStream("/player/blue_right_2.png"));
+            image = ImageIO.read(getClass().getResourceAsStream("/player/" + imageName + ".png"));
+            image = uTool.scaleImage(image, gp.tileSize, gp.tileSize);
         } catch(IOException e) {
             e.printStackTrace();
         }
+        return image;
     }
 
     /**
@@ -206,6 +221,6 @@ public class Player extends Entity{
                 break;
         }
 
-        g2.drawImage(image, screenX, screenY, gp.tileSize, gp.tileSize, null); // Draws the player's image
+        g2.drawImage(image, screenX, screenY, null); // Draws the player's image
     }
 }
